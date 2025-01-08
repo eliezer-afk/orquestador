@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "opossum": "^8.4.0"
+  },
+  "devDependencies": {
+    "@types/opossum": "^8.1.8"
+  }
+}
