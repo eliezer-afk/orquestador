@@ -1,20 +1,19 @@
-# Usa una imagen base oficial de Node.js
 FROM node:14
 
-# Establece el directorio de trabajo en /app
-WORKDIR /app
+# Establecer el directorio de trabajo
+WORKDIR /usr/src/app
 
-# Copia el package.json y el package-lock.json
+# Copiar los archivos de dependencias
 COPY package*.json ./
 
-# Instala las dependencias del proyecto
+# Instalar las dependencias
 RUN npm install
 
-# Copia el resto de la aplicación
+# Copiar el resto del código de la aplicación
 COPY . .
 
-# Expone el puerto en el que la aplicación se ejecutará
+# Exponer el puerto en el que la aplicación se ejecuta
 EXPOSE 3000
 
-# Define el comando para ejecutar la aplicación
-CMD ["node", "index.js"]
+# Definir el comando para iniciar la aplicación
+CMD ["npm", "start"]
