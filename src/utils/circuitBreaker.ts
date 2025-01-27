@@ -1,13 +1,20 @@
-import CircuitBreaker from 'opossum';
+import redis from "../config/redis";
 
-export function createCircuitBreaker(action: () => Promise<any>, fallback: any) {
-    const breaker = new CircuitBreaker(action, {
-        timeout: 3000,
-        errorThresholdPercentage: 50,
-        resetTimeout: 5000,
-    });
+async function circuitBreaker(key: string, failureThreshold: number) {
+    const failures = parseInt((await redis.get(key)) || "0", 10);
 
-    breaker.fallback(fallback);
+    if (failures >= failureThreshold) {
+        throw new Error("Circuito abierto: demasiados fallos");
+    }
 
-    return breaker;
+    try {
+        // Lógica del servicio aquí
+        console.log("Ejecutando operación...");
+    } catch (error) {
+        await redis.set(key, failures + 1, "EX", 3600); // Incrementar fallos
+        throw error;
+    }
 }
+
+// Ejemplo de uso
+await circuitBreaker("service:inventory", 5);

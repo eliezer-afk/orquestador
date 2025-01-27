@@ -1,9 +1,15 @@
 {
   "dependencies": {
+    "express": "^4.21.2",
+    "ioredis": "^5.4.2",
     "kafkajs": "^2.2.4",
-    "opossum": "^8.4.0"
+    "opossum": "^8.4.0",
+    "redis": "^4.7.0"
   },
   "devDependencies": {
-    "@types/opossum": "^8.1.8"
+    "@types/express": "^5.0.0",
+    "@types/ioredis": "^4.28.10",
+    "@types/opossum": "^8.1.8",
+    "@types/redis": "^4.0.10"
   }
 }
