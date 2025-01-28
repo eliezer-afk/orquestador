@@ -12,3 +12,4 @@ export async function initKafka() {
     await producer.connect();
     await consumer.connect();
 }
+export default initKafka;
