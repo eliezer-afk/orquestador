@@ -7,6 +7,7 @@
     "redis": "^4.7.0"
   },
   "devDependencies": {
+    "@types/axios": "^0.9.36",
     "@types/express": "^5.0.0",
     "@types/ioredis": "^4.28.10",
     "@types/opossum": "^8.1.8",
